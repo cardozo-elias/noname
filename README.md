@@ -128,3 +128,45 @@ Revisar términos de uso de cada API antes de producción.
 | - Sincronización en la nube (multi-dispositivo)|
 | - Autenticación de usuarios                    |
 +------------------------------------------------+
+
+## 🔄 Diagrama de flujo de usuario
+
+```text
+[Inicio de la app]
+        |
+        v
+[Seleccionar PDF]
+        |
+        v
+[Extraer direcciones del PDF]
+        |
+        v
+[Geocodificar direcciones]
+(Nominatim: dirección → coordenadas)
+        |
+        v
+[Mostrar mapa con ubicación actual]
+        |
+        v
+[Renderizar destinos en el mapa]
+(ordenados por cercanía)
+        |
+        v
+[Seleccionar destino más cercano]
+        |
+        v
+[Marcar destino como "Completado"]
+        |
+        v
+[Actualizar estado en SQLite]
+        |
+        v
+[Seleccionar siguiente destino más cercano]
+        |
+        v
+[¿Quedan destinos?] -- No --> [Fin del recorrido]
+        |
+       Sí
+        |
+        v
+[Volver a "Seleccionar destino más cercano"]
